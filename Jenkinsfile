@@ -45,4 +45,3 @@ cd /bitbucket/operating-systems/CentOS7/TemplateBuild
 """
 	}
 }
-}
