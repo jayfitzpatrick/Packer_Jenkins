@@ -6,7 +6,8 @@ pipeline {
 environment {
   myVar='BUILD_HOME=/bitbucket/operating-systems/CentOS7/TemplateBuild'
   // Use Packer which is set here: http://jenkinsserver:8080/configureTools/
-  tool name: 'Packer', type: 'biz.neustar.jenkins.plugins.packer.PackerInstallation'
+  Packer = ' /var/lib/jenkins/tools/biz.neustar.jenkins.plugins.packer.PackerInstallation/packer-1.2.5/packer'
+  tool name: 'packer-1.2.5', type: 'biz.neustar.jenkins.plugins.packer.PackerInstallation'
     def Packer = '/var/lib/jenkins/packer'
     //packer.tool = "Packer-1.2.5"
           }
