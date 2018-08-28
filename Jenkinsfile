@@ -27,7 +27,7 @@ elif [[ ! -d bootcd ]]; then
     echo "bootcd already exists but is not a directory" 1>&2
 fi
 sudo /usr/bin/cp -r ./extracted/isolinux ./bootcd/
-/usr/bin/cp isolinux.cfg ./bootcd/isolinux/isolinux.cfg
+sudo /usr/bin/cp isolinux.cfg ./bootcd/isolinux/isolinux.cfg
 cd bootcd/
 
 sudo mkisofs -o RXP-kickstart.iso -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -R -J -v -T isolinux/
