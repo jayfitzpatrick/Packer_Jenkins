@@ -1,7 +1,8 @@
 pipeline {
 environment {
   myVar='BUILD_HOME=/bitbucket/operating-systems/CentOS7/TemplateBuild'
-            }
+  tool name: 'Packer-1.2.5', type: 'biz.neustar.jenkins.plugins.packer.PackerInstallation'
+          }
 
 agent any
 
