@@ -10,7 +10,7 @@ environment {
     //packer.tool = "Packer-1.2.5"
           }
 tools {
-  tool name: 'packer-1.2.5', type: 'biz.neustar.jenkins.plugins.packer.PackerInstallation'
+  packer 'packer-1.2.5'
 }
 agent any
 
