@@ -6,6 +6,7 @@ node () {
     checkout scm
 sh """
 cd /bitbucket/operating-systems/CentOS7/TemplateBuild
+rm -Rf  output-vmware-iso
 ./packer build -force -var-file=./variables.json ./packer.json
 """	}
   stage ('Upload Packer Image to Openstack') {
