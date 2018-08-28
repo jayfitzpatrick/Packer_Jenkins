@@ -8,7 +8,7 @@ environment {
           }
 tools {
     // Use Packer which is set here: http://jenkinsserver:8080/configureTools/
-  packer 'packer-1.2.5'
+  biz.neustar.jenkins.plugins.packer.PackerInstallation 'packer-1.2.5'
 }
 agent any
 
