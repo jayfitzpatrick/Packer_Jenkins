@@ -6,7 +6,7 @@ pipeline {
 environment {
   myVar='BUILD_HOME=/bitbucket/operating-systems/CentOS7/TemplateBuild'
   // Use Packer which is set here: http://jenkinsserver:8080/configureTools/
-    def Packer = '/var/lib/jenkins/biz.neustar.jenkins.plugins.packer.PackerInstallation/Packer'
+    //def Packer = '/var/lib/jenkins/biz.neustar.jenkins.plugins.packer.PackerInstallation/Packer'
     //packer.tool = "Packer-1.2.5"
           }
 
@@ -16,6 +16,7 @@ stages {
 	stage ('Create Packer Image') {
     steps {
    		     checkout scm
+           echo $Packer-1.2.5
           sh "cd /bitbucket/operating-systems/CentOS7/TemplateBuild;\
           sudo rm -Rf  output-vmware-iso;\
           sudo $Packer build -force -var-file=./variables.json ./packer.json"
