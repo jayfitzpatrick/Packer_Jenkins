@@ -8,7 +8,7 @@ environment {
           }
 // Use Packer which is set here: http://jenkinsserver:8080/configureTools/
 tools {
-      PackerInstallation 'packer-1.2.5'
+      PackerInstallation "1.2.5"
 }
 agent any
 
