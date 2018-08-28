@@ -1,6 +1,6 @@
 pipeline {
 environment {
-  myVar='myVAR'
+  myVar='BUILD_HOME=/bitbucket/operating-systems/CentOS7/TemplateBuild'
             }
 
 agent any
