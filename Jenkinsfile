@@ -2,7 +2,7 @@ timestamps {
 
 node () {
 
-	stage ('Manual Creation of BootISO - Build') {
+	stage ('Create Minimal Boot ISO') {
  		env.myVar='findme'
     checkout scm
 sh """
@@ -36,7 +36,6 @@ sudo umount extracted
 logger "${env.myVar}"
  """
 	}
-}
 	stage ('Create Packer Image') {
    		env.myVar='myVAR'
 sh """
