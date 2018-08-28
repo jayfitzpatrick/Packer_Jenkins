@@ -1,13 +1,14 @@
 pipeline {
-environment { }
+environment {
+  env.myVar='myVAR'
+            }
 
 agent any
 
 stages {
 	stage ('Create Packer Image') {
     steps {
-   		     env.myVar='myVAR'
-           checkout scm
+   		     checkout scm
           sh "cd /bitbucket/operating-systems/CentOS7/TemplateBuild"
           sh "rm -Rf  output-vmware-iso"
           sh "./packer build -force -var-file=./variables.json ./packer.json"
