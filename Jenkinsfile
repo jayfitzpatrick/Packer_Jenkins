@@ -1,12 +1,13 @@
 pipeline {
   options {
    // Only keep the 10 most recent builds
-   buildDiscarder(logRotator(numToKeepStr:'3'))
+   buildDiscarder(logRotator(numToKeepStr:'10'))
  }
 environment {
   myVar='BUILD_HOME=/bitbucket/operating-systems/CentOS7/TemplateBuild'
   // Use Packer which is set here: http://jenkinsserver:8080/configureTools/
-    def Packer = '/var/lib/jenkins/biz.neustar.jenkins.plugins.packer.PackerInstallation/Packer'
+  tool name: 'Packer', type: 'biz.neustar.jenkins.plugins.packer.PackerInstallation'
+    //def Packer = '/var/lib/jenkins/biz.neustar.jenkins.plugins.packer.PackerInstallation/Packer'
     //packer.tool = "Packer-1.2.5"
           }
 
