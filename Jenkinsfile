@@ -1,6 +1,6 @@
 pipeline {
 environment {
-  env.myVar='myVAR'
+  myVar='myVAR'
             }
 
 agent any
