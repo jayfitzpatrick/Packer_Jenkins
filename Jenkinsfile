@@ -5,6 +5,7 @@ pipeline {
  }
 environment {
   myVar='BUILD_HOME=/bitbucket/operating-systems/CentOS7/TemplateBuild'
+  packer = tool name: 'packer-1.2.5', type: 'biz.neustar.jenkins.plugins.packer.PackerInstallation'
           }
 // tool name: 'packer-1.2.5', type: 'biz.neustar.jenkins.plugins.packer.PackerInstallation'
 // Use Packer which is set here: http://jenkinsserver:8080/configureTools/
@@ -15,7 +16,6 @@ agent any
 stages {
   stage ('packer Version') {
     steps {
-        def packer = tool name: 'packer-1.2.5', type: 'biz.neustar.jenkins.plugins.packer.PackerInstallation'
         sh 'packer --version'
         }
       }
