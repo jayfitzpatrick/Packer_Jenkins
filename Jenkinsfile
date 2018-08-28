@@ -24,7 +24,7 @@ stages {
    		     checkout scm
           sh "cd /bitbucket/operating-systems/CentOS7/TemplateBuild;\
           sudo rm -Rf  output-vmware-iso;\
-          sudo $Packer build -force -var-file=./variables.json ./packer.json"
+          sudo $Packer/packer build -force -var-file=./variables.json ./packer.json"
 	}
 }
 
