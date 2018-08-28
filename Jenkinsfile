@@ -1,7 +1,13 @@
 pipeline {
+  options {
+   // Only keep the 10 most recent builds
+   buildDiscarder(logRotator(numToKeepStr:'3'))
+ }
 environment {
   myVar='BUILD_HOME=/bitbucket/operating-systems/CentOS7/TemplateBuild'
-  tool name: 'Packer-1.2.5', type: 'biz.neustar.jenkins.plugins.packer.PackerInstallation'
+  // Use Packer which is set here: http://jenkinsserver:8080/configureTools/
+  packer.tool: 'Packer-1.2.5'
+  //def Packer = '/var/lib/jenkins/biz.neustar.jenkins.plugins.packer.PackerInstallation/Packer'
           }
 
 agent any
@@ -12,7 +18,7 @@ stages {
    		     checkout scm
           sh "cd /bitbucket/operating-systems/CentOS7/TemplateBuild;\
           sudo rm -Rf  output-vmware-iso;\
-          sudo ./packer build -force -var-file=./variables.json ./packer.json"
+          sudo $Packer build -force -var-file=./variables.json ./packer.json"
 	}
 }
 
