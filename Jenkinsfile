@@ -9,9 +9,9 @@ stages {
 	stage ('Create Packer Image') {
     steps {
    		     checkout scm
-          sh "cd /bitbucket/operating-systems/CentOS7/TemplateBuild"
-          sh "rm -Rf  output-vmware-iso"
-          sh "./packer build -force -var-file=./variables.json ./packer.json"
+          sh "cd /bitbucket/operating-systems/CentOS7/TemplateBuild;\
+          rm -Rf  output-vmware-iso;\
+          ./packer build -force -var-file=./variables.json ./packer.json"
 	}
 }
 
