@@ -38,8 +38,7 @@ logger "${env.myVar}"
 	}
 }
 	stage ('Create Packer Image') {
-    checkout scm
- 		env.myVar='myVAR'
+   		env.myVar='myVAR'
 sh """
 cd /bitbucket/operating-systems/CentOS7/TemplateBuild
 ./packer build -force -var-file=./variables.json ./packer.json
