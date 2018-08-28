@@ -4,6 +4,7 @@ node () {
 
 	stage ('Manual Creation of BootISO - Build') {
  		env.myVar='findme'
+    checkout scm
 sh """
 cd /tmp
 sudo yum install mkisofs -y
