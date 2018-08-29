@@ -7,6 +7,7 @@ pipeline {
 environment {
   // Use Packer as defined here: http://jenkinsserver:8080/configureTools/
     packer = tool name: 'packer-1.2.5', type: 'biz.neustar.jenkins.plugins.packer.PackerInstallation'
+    tag = VersionNumber (versionNumberString: '${BUILD_DATE_FORMATTED, "yyyyMMdd"}-develop-${BUILDS_TODAY}')
           }
 
 //tools {
@@ -17,7 +18,7 @@ agent any
 stages {
   stage ('Jenkinsfile Version') {
     steps {
-        tag = VersionNumber (versionNumberString: '${BUILD_DATE_FORMATTED, "yyyyMMdd"}-develop-${BUILDS_TODAY}')
+        sh "echo ${tag}"
         }
       }
 	stage ('Create Packer Image') {
