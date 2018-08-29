@@ -1,3 +1,4 @@
+
 pipeline {
   options {
    // Only keep the 10 most recent builds
@@ -14,9 +15,9 @@ environment {
 agent any
 
 stages {
-  stage ('packer Version') {
+  stage ('Jenkinsfile Version') {
     steps {
-        sh 'packer --version'
+        tag = VersionNumber (versionNumberString: '${BUILD_DATE_FORMATTED, "yyyyMMdd"}-develop-${BUILDS_TODAY}')
         }
       }
 	stage ('Create Packer Image') {
