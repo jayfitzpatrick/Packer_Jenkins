@@ -18,13 +18,12 @@ agent any
 stages {
   stage ('Jenkinsfile Version') {
     steps {
-        sh "echo ${tag}"
+        sh "echo ${OS_Build_Version}"
         }
       }
 	stage ('Create Packer Image') {
     steps {
-   		     checkout scm
-          sh "cd /bitbucket/operating-systems/CentOS7/TemplateBuild/ ;\
+   		    sh "cd /bitbucket/operating-systems/CentOS7/TemplateBuild/ ;\
           sudo rm -Rf  output-vmware-iso;\
           sudo ${Packer}/packer build -force -var-file=./variables.json ./packer.json"
 	}
