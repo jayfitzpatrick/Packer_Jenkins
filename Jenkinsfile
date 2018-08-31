@@ -42,7 +42,7 @@ post {
     cleanWs()
 }
 failure {
-    echo mail to: jason.fitzpatrick@realexpayments.com, subject: 'The Pipeline failed :('
+    echo "mail to: jason.fitzpatrick@realexpayments.com, subject: 'The Pipeline failed :('"
 }
 }
 }
