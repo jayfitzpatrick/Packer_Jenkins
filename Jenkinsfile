@@ -2,7 +2,7 @@
 pipeline {
   options {
    // Only keep the 10 most recent builds
-   buildDiscarder(logRotator(numToKeepStr:'11'))
+   buildDiscarder(logRotator(numToKeepStr:'10'))
  }
 environment {
   // Use Packer as defined here: http://jenkinsserver:8080/configureTools/
