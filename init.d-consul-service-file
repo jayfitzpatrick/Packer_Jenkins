@@ -62,8 +62,7 @@ start() {
     daemon \
         --pidfile=$pidfile \
         --user=consul \
-        " { $exec agent -config-file=$conffile -config-dir=$confdir &>> $logfile & } ; echo \$! >| $
-file "
+        " { $exec agent -config-file=$conffile -config-dir=$confdir &>> $logfile & } ; echo \$! >| $pidfile "
     
     RETVAL=$?
     echo
