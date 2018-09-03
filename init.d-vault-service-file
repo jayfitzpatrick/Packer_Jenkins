@@ -1,36 +1,36 @@
 #!/bin/bash
 #
-# consul        Manage the consul agent
+# vault        Manage the vault agent
 #
 # chkconfig:   2345 95 95
-# description: Consul is a tool for service discovery and configuration
-# processname: consul
-# config: /etc/consul/consul.hcl
-# pidfile: /var/run/consul/consul.pid
+# description: Vault is a tool for service secure password Management
+# processname: vault
+# config: /etc/vault/vault.hcl
+# pidfile: /var/run/vault/vault.pid
 
 ### BEGIN INIT INFO
-# Provides:       consul
-# Required-Start: $network
-# Required-Stop: $vault
-# Should-Start:
-# Should-Stop: $vault
+# Provides:       vault
+# Required-Start: $network $consul
+# Required-Stop:
+# Should-Start: $consul
+# Should-Stop:
 # Default-Start: 2 3 4 5
 # Default-Stop:  0 1 6
-# Short-Description: Manage the consul agent
-# Description: Consul is a tool for service discovery and configuration
+# Short-Description: Manage the vault agent
+# Description: Vault is a tool for service secure password Management
 ### END INIT INFO
  
 # source function library
 . /etc/rc.d/init.d/functions
 
-prog="consul"
-user="consul"
+prog="vault"
+user="vault"
 exec="/usr/bin/$prog"
-pidfile="/var/run/consul/$prog.pid"
+pidfile="/var/run/vault/$prog.pid"
 lockfile="/var/lock/subsys/$prog"
 logfile="/var/log/$prog"
-conffile="/etc/consul/consul.hcl"
-confdir="/etc/consul/"
+conffile="/etc/vault/vault.hcl"
+confdir="/etc/vault/"
 
 # pull in sysconfig settings
 [ -e /etc/sysconfig/$prog ] && . /etc/sysconfig/$prog
@@ -45,9 +45,9 @@ start() {
 
     umask 077
 
-	    if [ ! -d /var/run/consul ]; then
-        mkdir /var/run/consul/
-        chown $user:$user /var/run/consul/ -R
+	    if [ ! -d /var/run/vault ]; then
+        mkdir /var/run/vault/
+        chown $user:$user /var/run/vault/ -R
 		fi
 
     touch $logfile $pidfile
@@ -61,8 +61,8 @@ start() {
     ## &; action" but you can do "{cmd &}; action".
     daemon \
         --pidfile=$pidfile \
-        --user=consul \
-        " { $exec agent -config-file=$conffile -config-dir=$confdir &>> $logfile & } ; echo \$! >| $pidfile "
+        --user=$user \
+        " { $exec server -config=$conffile &>> $logfile & } ; echo \$! >| $pidfile "
 
     RETVAL=$?
     echo
